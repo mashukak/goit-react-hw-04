@@ -1,7 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
 
-// Вказуємо root як елемент додатку
 Modal.setAppElement('#root');
 
 const ImageModal = ({ image, onClose }) => {
@@ -26,7 +25,7 @@ const ImageModal = ({ image, onClose }) => {
           overflow: 'auto',
         },
         overlay: {
-          backgroundColor: 'rgba(0, 0, 0, 0.75)', // Прозорий фон
+          backgroundColor: 'rgba(0, 0, 0, 0.75)',
         },
       }}
     >
