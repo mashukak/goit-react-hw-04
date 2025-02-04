@@ -1,7 +1,5 @@
-import React from "react";
+import styles from './ImageGallery.module.css';
 
-const ErrorMessage = ({ message }) => {
-  return <p className="error!">{message}</p>;
-};
-
-export default ErrorMessage;
+export default function ErrorMessage({ message }) {
+  return <p className={styles.error}>{message}</p>;
+}

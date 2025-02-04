@@ -1,14 +1,14 @@
-import React from "react";
-import ImageCard from "./ImageCard";
+import ImageCard from './ImageCard';
+import styles from './ImageGallery.module.css';
 
-const ImageGallery = ({ images, onSelect }) => {
+export default function ImageGallery({ images, onImageClick }) {
   return (
-    <ul className="image-gallery">
+    <ul className={styles.gallery}>
       {images.map((image) => (
-        <ImageCard key={image.id} image={image} onSelect={onSelect} />
+        <li key={image.id}>
+          <ImageCard image={image} onClick={() => onImageClick(image)} />
+        </li>
       ))}
     </ul>
   );
-};
-
-export default ImageGallery;
+}

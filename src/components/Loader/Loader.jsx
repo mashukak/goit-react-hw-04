@@ -1,8 +1,10 @@
-import React from "react";
-import { Circles } from "react-loader-spinner";
+import { Circles } from 'react-loader-spinner';
+import styles from './Loader.module.css';
 
-const Loader = () => {
-  return <Circles color="#00BFFF" height={50} width={50} />;
-};
-
-export default Loader;
+export default function Loader() {
+  return (
+    <div className={styles.loader}>
+      <Circles color="#00BFFF" height={80} width={80} />
+    </div>
+  );
+}

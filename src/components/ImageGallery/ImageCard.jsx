@@ -1,11 +1,7 @@
-import React from "react";
-
-const ImageCard = ({ image, onSelect }) => {
+export default function ImageCard({ image, onClick }) {
   return (
-    <li onClick={() => onSelect(image.urls.regular)}>
+    <div onClick={onClick}>
       <img src={image.urls.small} alt={image.alt_description} />
-    </li>
+    </div>
   );
-};
-
-export default ImageCard;
+}
