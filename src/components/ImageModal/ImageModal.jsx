@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import styles from './ImageModal.module.css';
 
 export default function ImageModal({ image, isOpen, onClose }) {
-  if (!image) return null; // Перевірка, щоб уникнути помилки
+  if (!image) return null;
 
   return (
     <Modal isOpen={isOpen} onRequestClose={onClose} ariaHideApp={false} className={styles.modal}>
