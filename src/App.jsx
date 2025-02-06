@@ -20,7 +20,7 @@ export default function App() {
 
   useEffect(() => {
     if (!query) return;
-    
+
     async function fetchImages() {
       setLoading(true);
       setError(null);
@@ -34,13 +34,20 @@ export default function App() {
           }
         );
 
+        console.log("API Response:", response.data);
+
+        if (!Array.isArray(response.data.results)) {
+          throw new Error("API returned invalid data");
+        }
+
         if (page === 1) {
           setImages(response.data.results);
         } else {
           setImages((prev) => [...prev, ...response.data.results]);
         }
       } catch (err) {
-        setError('Помилка завантаження зображень!');
+        console.error("Error fetching images:", err);
+        setError("Error loading images!");
       } finally {
         setLoading(false);
       }
@@ -61,12 +68,10 @@ export default function App() {
       <SearchBar onSubmit={handleSearch} />
       <Toaster />
       {error && <ErrorMessage message={error} />}
-      <ImageGallery images={images} onImageClick={setSelectedImage} />
+      <ImageGallery images={Array.isArray(images) ? images : []} onImageClick={setSelectedImage} />
       {loading && <Loader />}
       {images.length > 0 && !loading && <LoadMoreBtn onClick={() => setPage((prev) => prev + 1)} />}
-      <ImageModal image={selectedImage} onClose={() => setSelectedImage(null)} />
+      <ImageModal image={selectedImage} isOpen={!!selectedImage} onClose={() => setSelectedImage(null)} />
     </div>
   );
 }
-
-

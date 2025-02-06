@@ -1,13 +1,14 @@
+import React from 'react';
 import Modal from 'react-modal';
 import styles from './ImageModal.module.css';
 
-export default function ImageModal({ image, onClose }) {
+export default function ImageModal({ image, isOpen, onClose }) {
+  if (!image) return null; // Перевірка, щоб уникнути помилки
+
   return (
-    <Modal isOpen={!!image} onRequestClose={onClose} ariaHideApp={false} className={styles.modal}>
-      <div>
-        <img src={image.urls.regular} alt={image.alt_description} />
-        <button onClick={onClose}>Закрити</button>
-      </div>
+    <Modal isOpen={isOpen} onRequestClose={onClose} ariaHideApp={false} className={styles.modal}>
+      <img src={image.urls?.regular} alt={image.alt_description || 'Image'} />
+      <button onClick={onClose}>Close</button>
     </Modal>
   );
 }
